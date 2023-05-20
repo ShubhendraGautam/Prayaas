@@ -1,0 +1,73 @@
+<div class="container-me">
+        <h1 class="upload-text">Upload an Image</h1>
+        <label for="image-upload">Choose Image</label>
+        <form action="/gallery" enctype="multipart/form-data" method="post" >
+          <input type="file" id="image-upload" accept="image/*"  name="mypic" onchange="previewImage(event)">
+          <div class="uploaded-image">
+              <img id="preview" src="#" alt="Uploaded Image">
+          </div>
+          <button type="submit" id="submitButton">Submit image</button>
+        </form>
+    </div>
+
+
+
+    <div class="container">
+        <h1>Upcoming events</h1>
+        <p>Hey Co-Ordies, Add upcoming excitement to Prayaas!</p>
+        <form action="/upcomingevent" method="post">
+            <div class="row">
+                <div class="column">
+                    <label for="name">Date of Event</label>
+                    <input type="text" name="date" required>
+                </div>
+                <div class="column">
+                    <label for="email">Time</label>
+                    <input type="text" name="time" required>
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="email">Location</label>
+                    <input type="text" name="loc" required>
+                </div>
+                <div class="column">
+                    <label for="subject">Name</label>
+                    <input type="text" name="name" required>
+                </div>
+            </div>
+            <div class="row">
+            <div class="column">
+                <label for="contact">Description</label>
+                <input type="text" name="descr" required>
+            </div>
+        </div>
+            <button type="submit" >Submit</button>
+        </form>
+    </div>
+
+
+     <div class="container">
+    <h1>Upcoming events</h1>
+    <p>Hey Co-Ordies, Add upcoming excitement to Prayaas!</p>
+    <form action="/alumni" method="post" enctype="multipart/form-data">
+        <div class="row">
+          <div class="column">
+            <label for="subject">Name</label>
+            <input type="text" name="name" required>
+          </div>
+          <div class="column">
+            <label for="email">Email</label>
+            <input type="text" name="email" required>
+         </div>
+        </div>
+         <div class="row">
+        <div class="column">
+            <label for="contact">Description</label>
+            <input type="text" name="descr" required>
+        </div>
+         </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

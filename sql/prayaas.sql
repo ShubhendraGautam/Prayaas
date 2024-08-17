@@ -1,124 +1,101 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Apr 29, 2023 at 11:57 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+CREATE DATABASE  IF NOT EXISTS `prayaas` ;
+USE `prayaas`;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `prayaas`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `devent`
---
+DROP TABLE IF EXISTS `devent`;
 
 CREATE TABLE `devent` (
   `name` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `proposal` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `proposal` varchar(500) NOT NULL,
+  PRIMARY KEY (`email`)
+) ;
 
--- --------------------------------------------------------
+LOCK TABLES `devent` WRITE;
 
---
--- Table structure for table `event`
---
+INSERT INTO `devent` VALUES ('Saikat SadhuKhan','iit2021261@iiita.ac.in','kjbjhbjh'),('Shubhendra Gautam','iit202142@iiita.ac.in','Food serving');
+
+UNLOCK TABLES;
+
+
+
+DROP TABLE IF EXISTS `event`;
 
 CREATE TABLE `event` (
   `date` varchar(30) NOT NULL,
   `time` varchar(30) NOT NULL,
   `name` varchar(30) NOT NULL,
   `loc` varchar(30) NOT NULL,
-  `descr` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `descr` varchar(500) NOT NULL,
+  PRIMARY KEY (`date`)
+);
 
---
--- Dumping data for table `event`
---
+LOCK TABLES `event` WRITE;
 
-INSERT INTO `event` (`date`, `time`, `name`, `loc`, `descr`) VALUES
-('29 April 2023', '8 am to 10 am', 'voiceup', 'IIITA Jhalwa', 'ishfkahfuhiulshyfiulyaiuyfiulyiusfhkjh');
+INSERT INTO `event` VALUES ('26 April 2023','8 am to 10 am','voiceup','IIITA Jhalwa','ishfkahfuhiulshyfiulyaiuyfiulyiusfhkjh'),('28 April 2023','8 am to 10 am','voiceup','IIITA Jhalwa','ishfkahfuhiulshyfiulyaiuyfiulyiusfhkjh'),('29 April 2023','8 am to 10 am','voiceup','IIITA Jhalwa','ishfkahfuhiulshyfiulyaiuyfiulyiusfhkjh'),('32 April 2023','9:30 to 10:30','Donation Drive','AAA section','We got selected in GFG');
 
--- --------------------------------------------------------
+UNLOCK TABLES;
 
---
--- Table structure for table `sessions`
---
+DROP TABLE IF EXISTS `gallery`;
+
+CREATE TABLE `gallery` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `image` longblob NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ;
+
+
+
+
+DROP TABLE IF EXISTS `sessions`;
 
 CREATE TABLE `sessions` (
   `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `expires` int(11) UNSIGNED NOT NULL,
-  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `expires` int unsigned NOT NULL,
+  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  PRIMARY KEY (`session_id`)
+) ;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `student`
---
+LOCK TABLES `sessions` WRITE;
+
+UNLOCK TABLES;
+
+
+
+DROP TABLE IF EXISTS `student`;
 
 CREATE TABLE `student` (
   `username` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(80) NOT NULL,
-  `type` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `type` varchar(30) NOT NULL,
+  PRIMARY KEY (`email`)
+) ;
 
--- --------------------------------------------------------
+LOCK TABLES `student` WRITE;
 
---
--- Table structure for table `testinomial`
---
+INSERT INTO `student` VALUES ('Hemant','iit2021220@iiita.ac.in','$2a$08$3M2q0tqLubsMd71O3Bf2VuSDr/34RIHwY/H.OPKY0rwYuaJLeW7FO','member'),('Shubham','iit202142@iiita.ac.in','$2a$08$3BDWOAw7fJIBU1BIe2Xg/eozznx1BISPmx99Py8SgJHf9yxejSJi.','coordinator'),('ram','rav@iiita.ac.in','$2a$08$dyKCkdnmPQ164URyb9vtuud.XUZYjRa9RRbH7zzCvdGV7K9BvH/sa','coordinator');
 
-CREATE TABLE `testinomial` (
+UNLOCK TABLES;
+
+
+
+DROP TABLE IF EXISTS `testimonial`;
+
+CREATE TABLE `testimonial` (
   `name` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `testi` varchar(200) NOT NULL,
-  `img` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `profession` varchar(30) NOT NULL,
+  `testimonial` varchar(500) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ;
 
---
--- Indexes for dumped tables
---
+LOCK TABLES `testimonial` WRITE;
 
---
--- Indexes for table `devent`
---
-ALTER TABLE `devent`
-  ADD PRIMARY KEY (`email`);
+INSERT INTO `testimonial` VALUES ('Chandan','GATE CSE','hello everyone','chan@gmail.com'),('Chandan Kumar','Googler','May God bless everyone','chandan@gmail.com'),('Luv Kumar','Youtuber','This is one of the best service anyone can provide to society','luv@gmail.com'),('Shubham Panda','ML Expert','I want to thank everyone who started Prayaas','panda@gmail.com'),('Rajesh','IAS','I love my India','rajesh@gmail.com'),('Saikat SadhuKhan','GATE CSE','I was very happy and pleases to serve our nation','saikat@gmail.com');
 
---
--- Indexes for table `event`
---
-ALTER TABLE `event`
-  ADD PRIMARY KEY (`date`);
-
---
--- Indexes for table `sessions`
---
-ALTER TABLE `sessions`
-  ADD PRIMARY KEY (`session_id`);
-
---
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`email`);
-COMMIT;
-
+UNLOCK TABLES;
 
